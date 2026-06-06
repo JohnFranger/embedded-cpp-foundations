@@ -1,0 +1,40 @@
+# ─── Build directories ───────────────────────────────────────────────
+build/
+.build/
+out/
+bin/
+obj/
+
+# ─── Compilation artifacts & firmware images ─────────────────────────
+*.hex
+*.elf
+*.bin
+*.o
+*.a
+*.d
+*.lst
+*.map
+*.eep
+*.lss
+*.sym
+
+# ─── Arduino IDE 2.x ─────────────────────────────────────────────────
+*.cache
+sketch/
+.theia/
+build.options.json
+
+# ─── VS Code / PlatformIO ────────────────────────────────────────────
+.vscode/
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# ─── CLion / JetBrains ───────────────────────────────────────────────
+.idea/
+cmake-build-*/
+
+# ─── OS junk ─────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
