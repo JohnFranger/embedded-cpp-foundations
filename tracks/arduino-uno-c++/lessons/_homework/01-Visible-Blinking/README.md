@@ -1,4 +1,4 @@
-# Homework 33 — Fastest Visible Blink
+# Homework 01 — Fastest Visible Blink
 
 ## Challenge Prompt
 
