@@ -1,4 +1,4 @@
-# Homework 33 — Joystick-Controlled Servo
+# Homework 05 — LED Binary Counter
 
 ## Challenge Prompt
 
