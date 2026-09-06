@@ -1,27 +1,24 @@
-# Homework 33 — Joystick-Controlled Servo
+# Homework 27 - Push Buttons as a Switch
 
 ## Challenge Prompt
 
-_State the problem as assigned._
-
-> Read a single joystick axis and command a servo to mirror its position in
-> real time, sweeping the full 0–180° range as the stick travels end to end.
+> Use a push button to switch between an on and off state for an LED. 
 
 ## Engineering Approach
 
-_Outline the design before writing code._
-
-- **Input:** Analog joystick wiper on `A0`, sampled via the 10-bit ADC.
-- **Output:** Standard hobby servo on pin 6, driven by the `Servo` library.
-- **Transfer function:** Linearly map the ADC range `[0, 1023]` onto the
-  servo angle range `[0°, 180°]` using `map()`.
-- **Open questions:** Is deadband filtering needed near center? Should motion
-  be smoothed to avoid servo jitter from ADC noise?
+- **Input:** Push-Button wired with a pull-up resistor
+- **Output:** White LED 
+- **Open questions:** Why did my delay fix it and why was void loop not able to keep up before?
 
 ## Debugging Notes
 
 _Capture what went wrong and how it was resolved._
 
-- [ ] Confirm joystick ground and Vcc orientation before trusting readings.
-- [ ] Verify the servo has an adequate external 5 V supply under load.
-- [ ] Log raw ADC values over Serial to check for jitter or dead zones.
+- This was the hardest problem he has given yet. Of course the wiring stayed the same as from the lesson but
+figuring out a way to do in code was a difficult task. I initially thought of recording the current lightState and using that to switch
+however the issue was that the void loop runs continuously so when I switch states or let go I cant really measure it actively. 
+My first though was how to do this asynchronously but obviously Paul hasn't even remotely taught that so I scratched it.
+I first needed to define a change in button states so I looked at having a previous state feature. This then led me to think of waiting until letting go
+Then I made my solution
+- There was still an issue of flickering at times though which I utilized the serial monitor to analyze. It at times appeared to run the code twice for each click, hence
+turning it on and back off or vice versa. I attributed this to a lack of switching quick enough for void loop. Thus I added a negligible 10ms delay solving the issue
