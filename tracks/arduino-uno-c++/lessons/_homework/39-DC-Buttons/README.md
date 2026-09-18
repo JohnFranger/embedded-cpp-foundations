@@ -1,4 +1,4 @@
-# Homework 33 — Joystick-Controlled Servo
+# Homework 39 - DC Buttons
 
 ## Challenge Prompt
 

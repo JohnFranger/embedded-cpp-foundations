@@ -1,5 +1,5 @@
 /**
- * Homework 39 - Joystick Buttons
+ * Homework 39 - DC Buttons
  */
 
 int speedPin = 5;
