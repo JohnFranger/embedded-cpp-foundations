@@ -1,0 +1,61 @@
+/**
+ * Homework 42 - Serial to Parallel Shift Register
+
+Create a binary counter was the assignment but I spiced it up a bit to make it more fun.
+ */
+
+ 
+int latchPin = 11;
+int clockPin = 9;
+int dataPin = 12;
+
+byte LEDs = 0x00;
+
+int dt;
+
+int selection = 0;
+
+void setup() {
+  Serial.begin(9600); 
+  pinMode(latchPin, OUTPUT);
+  pinMode(dataPin, OUTPUT);
+  pinMode(clockPin, OUTPUT);
+}
+
+void loop() {
+  while (selection == 0){
+    Serial.println("Select 1. Binary Counter or 2. Zoom Thing");
+    while(Serial.available() == 0){
+
+    }
+    selection = Serial.parseInt();
+    if(selection != 1 && selection != 2){
+      selection = 0;
+    }
+
+  }
+
+  if(selection == 1){
+    digitalWrite(latchPin, LOW);
+    shiftOut(dataPin,clockPin,LSBFIRST,LEDs);
+    digitalWrite(latchPin, HIGH);
+
+    dt = 400;
+    LEDs++;
+    delay(dt);
+  }
+
+  if(selection == 2){
+    digitalWrite(latchPin, LOW);
+    shiftOut(dataPin,clockPin,LSBFIRST,LEDs);
+    digitalWrite(latchPin, HIGH);
+
+    dt = 50;
+    if(LEDs == 0){
+      LEDs = 0x01;
+    }
+    LEDs = LEDs + LEDs;
+    delay(dt);
+  }
+
+}
