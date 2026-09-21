@@ -11,6 +11,8 @@ int dataPin = 12;
 
 byte LEDs = 0x00;
 
+byte Values[] = {1,2,4,8,16,32,64,128};
+
 int dt;
 
 int selection = 0;
@@ -46,16 +48,22 @@ void loop() {
   }
 
   if(selection == 2){
-    digitalWrite(latchPin, LOW);
-    shiftOut(dataPin,clockPin,LSBFIRST,LEDs);
-    digitalWrite(latchPin, HIGH);
-
+    
     dt = 50;
-    if(LEDs == 0){
-      LEDs = 0x01;
+    for(int i = 0; i < 8; i++){
+      LEDs = Values[i];
+      digitalWrite(latchPin, LOW);
+      shiftOut(dataPin,clockPin,LSBFIRST,LEDs);
+      digitalWrite(latchPin, HIGH);
+      delay(dt);
     }
-    LEDs = LEDs + LEDs;
-    delay(dt);
+    for(int i = 7; i > -1; i--){
+      LEDs = Values[i];
+      digitalWrite(latchPin, LOW);
+      shiftOut(dataPin,clockPin,LSBFIRST,LEDs);
+      digitalWrite(latchPin, HIGH);
+      delay(dt);
+    }
   }
 
 }
