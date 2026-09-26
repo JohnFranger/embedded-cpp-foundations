@@ -49,15 +49,15 @@ void loop() {
 
   if(selection == 2){
     
-    dt = 50;
-    for(int i = 0; i < 8; i++){
+    dt = 60;
+    for(int i = 0; i < 7; i++){
       LEDs = Values[i];
       digitalWrite(latchPin, LOW);
       shiftOut(dataPin,clockPin,LSBFIRST,LEDs);
       digitalWrite(latchPin, HIGH);
       delay(dt);
     }
-    for(int i = 7; i > -1; i--){
+    for(int i = 7; i > 0; i--){
       LEDs = Values[i];
       digitalWrite(latchPin, LOW);
       shiftOut(dataPin,clockPin,LSBFIRST,LEDs);
