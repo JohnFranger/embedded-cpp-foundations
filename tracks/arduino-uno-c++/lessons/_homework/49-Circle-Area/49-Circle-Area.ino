@@ -1,7 +1,5 @@
 /**
- * Lesson 49 - Simple Calc LCD
-
- Homework check from yesterday
+ * Homework 49 - Area Calc
  */
 
 #include <LiquidCrystal.h>
@@ -18,8 +16,6 @@ LiquidCrystal lcd(rs,en,d4,d5,d6,d7);
 float radius;
 float pi = 3.14;
 float area;
-
-String op;
 
 void setup() {
   lcd.begin(16,2);
