@@ -1,21 +1,17 @@
 /**
- * Lesson 54 - Speed of Light Calculations
+ * Lesson 55 - Measuring Distance
 
- Redoing homework from yesterday
- I used cm/microsecond 
- Silly Paul used inches. 
+Homework from yesterday
 
- Wow Paul called me out for just throwing it in excel and not doing math...
-
- Wow he also called me out for making fun of the imperial system
-
- This was just a math and physics lesson, not an arduino lesson :(
+Paul uses inches though so I'll use it for this lesson but homeworks I wont
  */
 
 
 int trigPin = 12;
 int echoPin = 11;
 int pingTravelTime;
+float pingTravelDistance;
+float distToTarget;
 
 void setup() {
   pinMode(trigPin, OUTPUT);
@@ -30,6 +26,10 @@ void loop() {
   delayMicroseconds(10);
   digitalWrite(trigPin,LOW);
   pingTravelTime = pulseIn(echoPin, HIGH);
-  Serial.println(pingTravelTime);
   delay(25);
-}
+  pingTravelDistance = (pingTravelTime*765.*5280.*12.)/(3600.*1000000.);
+  distToTarget = pingTravelDistance/2;
+  Serial.print(distToTarget);
+  Serial.println(" inches");
+  delay(500);
+  }
