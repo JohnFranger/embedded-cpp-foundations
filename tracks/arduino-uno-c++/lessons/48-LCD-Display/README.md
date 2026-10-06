@@ -10,6 +10,7 @@ _Describe the physical circuit here._
               5V -> Potentiometer/V0 -> GND
               VSS -> GND
               VDD -> 5V
+              RW -> GND
               A -> 5V
               K -> 5V
 
